@@ -9,25 +9,25 @@
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
 <div class="bg-white p-8 rounded-2xl shadow-lg max-w-lg w-full">
     <h2 class="text-2xl font-bold text-gray-700 text-center mb-6">Cadastro de Remédio</h2>
-    <form class="space-y-5">
+    <form class="space-y-5" method="post" action="/create">
         <!-- Nome do Remédio -->
         <div>
-            <label for="nome" class="block text-sm font-medium text-gray-700">Nome do Remédio</label>
-            <input type="text" id="nome" placeholder="Digite o nome"
-                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400 focus:border-green-400">
+            <label for="name" class="block text-sm font-medium text-gray-700">Nome do Remédio</label>
+            <input type="text" id="name" placeholder="Digite o nome"
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400 focus:border-green-400" name="name">
         </div>
 
         <!-- Dosagem -->
         <div>
             <label for="dosagem" class="block text-sm font-medium text-gray-700">Dosagem (mg/ml)</label>
             <input type="number" id="dosagem" placeholder="Ex: 500" min="0"
-                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400 focus:border-green-400">
+                   class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400 focus:border-green-400" name="dosagem">
         </div>
 
         <!-- Frequência -->
         <div>
             <label for="frequencia" class="block text-sm font-medium text-gray-700">Frequência</label>
-            <select id="frequencia" class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400">
+            <select id="frequencia" class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400" name="frequencia">
                 <option value="">Selecione</option>
                 <option value="diario">Diário</option>
                 <option value="alternados">Dias Alternados</option>
@@ -38,13 +38,13 @@
         <!-- Horário -->
         <div>
             <label for="horario" class="block text-sm font-medium text-gray-700">Horário</label>
-            <input type="time" id="horario"
+            <input type="time" id="horario" name="horario"
                    class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400 focus:border-green-400">
         </div>
 
         <!-- Observações -->
         <div>
-            <label for="observacao" class="block text-sm font-medium text-gray-700">Observações</label>
+            <label for="observacao" class="block text-sm font-medium text-gray-700" name="observacao">Observações</label>
             <textarea id="observacao" rows="3" placeholder="Informações adicionais"
                       class="w-full mt-1 p-2 border border-gray-300 rounded-lg focus:ring-green-400 focus:border-green-400"></textarea>
         </div>
