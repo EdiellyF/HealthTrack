@@ -33,7 +33,7 @@ public class MedicineController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Medicine> createMedicine(Medicine medicine) {
+    public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {
         this.medicineService.save(medicine);
         return ResponseEntity.status(HttpStatus.CREATED).body(medicine);
     }
