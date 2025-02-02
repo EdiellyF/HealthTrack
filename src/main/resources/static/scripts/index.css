@@ -1,46 +1,56 @@
-
-
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
+    background-color: #f0fdf4;
+    color: #2e3d49;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
-}
-
-
-.card {
-    background: white;
     padding: 20px;
-    margin: 15px auto;
+}
+
+.medication-schedule {
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #20c997;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.medication-list {
+    list-style: none;
+    padding: 0;
+}
+
+.medication-item {
+    background-color: #d4f8d4; /* Verde suave */
+    padding: 10px;
+    margin: 10px 0;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    max-width: 400px;
-    color: darkslategray;
+    list-style-type: none;
 }
 
-.card h3 {
-    font-size: 1.5rem;
-    color: #4a90e2;
-    margin-bottom: 10px;
-}
-
-.card p {
+.medication-item div {
     margin: 5px 0;
     font-size: 1rem;
+    color: #054a0d; /* Verde escuro */
 }
 
-.time {
-    color: #ff6b6b;
+.medication-time {
     font-weight: bold;
+    color: #117a65;
 }
 
-.note {
-    background: #ffefc2;
-    padding: 8px;
-    border-radius: 5px;
-    color: #856404;
+.medication-name {
+    flex-grow: 1;
+    color: #2e3d49;
 }
+
+
+
+
