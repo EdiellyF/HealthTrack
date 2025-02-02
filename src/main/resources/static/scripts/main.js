@@ -1,47 +1,55 @@
-fetch('/medicines')
-    .then(response => response.json())
-    .then(medicines => {
-        const list = document.getElementById('medicinesList');
-        medicines.forEach(medicine => {
-
-           const card = criarCards(medicine);
-           list.appendChild(card);
-            console.log(medicines)
-        });
-    })
-    .catch(error => console.error('Erro ao buscar medicamentos:', error));
+document.addEventListener("DOMContentLoaded", function () {
 
 
-
- function criarCards (medicine){
-     const card = document.createElement("div");
-     card.classList.add("card");
-
-     const title = document.createElement("h3");
-     title.innerText = `Medicamento: ${medicine.name}`;
-     card.appendChild(title);
-
-     const dosagem = document.createElement("p");
-     dosagem.innerText =  `Dosagem: ${medicine.dosagem} mg`;
-     card.appendChild(dosagem);
-
-     const frequency = document.createElement("p");
-     frequency.innerText =  `Frequência: ${medicine.frequencia}`;
-     card.appendChild(frequency);
+    fetch('/medicines')
+        .then(response => response.json())
+        .then(medicines => {
+            const list = document.getElementById('medicinesList');
+            medicines.forEach(medicine => {
+                const card = criarListaMedicamento(medicine);
+                list.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Erro ao buscar medicamentos:', error));
 
 
-     const time = document.createElement("p");
-     time.classList.add("time");
-     time.innerText = `Horário: ${medicine.horario}`;
-     card.appendChild(time);
+    function criarListaMedicamento(medicine) {
+        const item = document.createElement("li");
+        item.classList.add("medication-item");
+
+        // Horário do medicamento
+        const time = document.createElement("div");
+        time.classList.add("medication-time");
+        time.innerText = `Horário: ${medicine.horario}`;
+        item.appendChild(time);
+
+        // Nome do medicamento
+        const title = document.createElement("div");
+        title.classList.add("medication-name");
+        title.innerText = `Medicamento: ${medicine.name}`;
+        item.appendChild(title);
+
+        // Dosagem
+        const dosagem = document.createElement("div");
+        dosagem.classList.add("medication-dosage");
+        dosagem.innerText = `Dosagem: ${medicine.dosagem} mg`;
+        item.appendChild(dosagem);
+
+        // Frequência
+        const frequency = document.createElement("div");
+        frequency.classList.add("medication-frequency");
+        frequency.innerText = `Frequência: ${medicine.frequencia}`;
+        item.appendChild(frequency);
 
 
-     if(medicine.observacao){
-         const note = document.createElement("p");
-         note.classList.add("note");
-         note.innerText = `Observação: ${medicine.observacao}`;
-         card.appendChild(note)
-     }
+        if (medicine.observacao) {
+            const note = document.createElement("div");
+            note.classList.add("note");
+            note.innerText = `Observação: ${medicine.observacao}`;
+            item.appendChild(note);
+        }
 
-     return card;
-}
+        return item;
+    }
+
+} );
