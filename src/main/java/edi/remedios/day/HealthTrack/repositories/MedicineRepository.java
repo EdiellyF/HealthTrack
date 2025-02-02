@@ -2,11 +2,10 @@ package edi.remedios.day.HealthTrack.repositories;
 
 import edi.remedios.day.HealthTrack.model.Medicine;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
 
-@Repository
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
-
-
+    List<Medicine> findByProximaNotificacao(LocalDateTime proximaNotificacao);
 }

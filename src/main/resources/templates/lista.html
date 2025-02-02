@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Medicamentos</title>
+    <link rel="stylesheet" th:href="@{/scripts/index.css}"> <!-- Caminho correto -->
+</head>
+<body>
+<section class="medication-schedule">
+    <h1>Agenda de Medicamentos</h1>
+    <ul class="medication-list">
+        <li th:each="medicine : ${medicamentos}" class="medication-item">
+            <div class="medication-name" th:text="${medicine.name}"></div>
+            <div class="medication-time" th:text="${#temporals.format(medicine.proximaNotificacao, 'dd/MM/yyyy HH:mm')}"></div>
+        </li>
+    </ul>
+</section>
+</body>
+</html>
