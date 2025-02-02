@@ -18,9 +18,7 @@ import java.util.List;
 @RestController
 public class MedicineController {
 
-
     private final GenericService<Medicine, Long> medicineService;
-
 
     @Autowired
     public MedicineController(GenericService<Medicine, Long> medicineService) {
@@ -30,7 +28,7 @@ public class MedicineController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<Medicine> createMedicine(@RequestBody Medicine medicine) {
+    public ResponseEntity<Medicine> createMedicine(Medicine medicine) {
         this.medicineService.save(medicine);
         return ResponseEntity.ok().body(medicine);
     }
