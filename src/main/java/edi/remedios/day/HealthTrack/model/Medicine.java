@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 import java.time.LocalTime;
-
+import java.util.Objects;
 
 
 @Entity
@@ -45,6 +45,7 @@ public class Medicine {
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -83,4 +84,18 @@ public class Medicine {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Medicine medicine)) return false;
+        return Objects.equals(getName(), medicine.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getName());
+    }
+
+
 }

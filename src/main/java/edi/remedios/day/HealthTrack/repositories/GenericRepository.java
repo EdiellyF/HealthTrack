@@ -1,5 +1,6 @@
 package edi.remedios.day.HealthTrack.repositories;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,7 @@ public class GenericRepository<T, ID> {
 
     private final JpaRepository<T, ID> jpaRepository;
 
+    @Autowired
     public GenericRepository(JpaRepository<T, ID> jpaRepository) {
         this.jpaRepository = jpaRepository;
     }
@@ -31,5 +33,5 @@ public class GenericRepository<T, ID> {
         jpaRepository.deleteById(id);
     }
 
-    // Você pode adicionar outros métodos genéricos aqui conforme necessário
+
 }

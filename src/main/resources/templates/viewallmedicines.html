@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/scripts/index.css}">
 </head>
 <body>
 
@@ -13,22 +14,6 @@
 
 </div>
 
-<script>
-
-    fetch('/medicines')
-        .then(response => response.json())
-        .then(medicines => {
-            const list = document.getElementById('medicinesList');
-            medicines.forEach(medicine => {
-                const li = document.createElement('li');
-                li.textContent = `${medicine.name} - Fabricante: ${medicine.dosagem}`;
-                list.appendChild(li);
-                console.log(medicines)
-            });
-        })
-        .catch(error => console.error('Erro ao buscar medicamentos:', error));
-
-</script>
-
 </body>
+<script th:src="@{/scripts/main.js}"></script>
 </html>

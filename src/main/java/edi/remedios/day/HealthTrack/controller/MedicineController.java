@@ -18,9 +18,7 @@ import java.util.List;
 @RestController
 public class MedicineController {
 
-
     private final GenericService<Medicine, Long> medicineService;
-
 
     @Autowired
     public MedicineController(GenericService<Medicine, Long> medicineService) {
