@@ -3,38 +3,35 @@ package edi.remedios.day.HealthTrack.model;
 import jakarta.persistence.*;
 
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Objects;
 
 
 @Entity
-@Table(name = "tb_medicine")
-public class Medicine {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public class Medicine {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+        private String name;
+        private String dosagem;
 
+        @Enumerated(EnumType.STRING)
+        private Frequencia frequencia;
 
-    private String name;
+        @Column(name = "data_hora_inicial")
+        private LocalDateTime dataHoraInicial;
 
-    private double dosagem;
+        @Column(name = "proxima_notificacao")
+        private LocalDateTime proximaNotificacao;
 
-    private String frequencia;
+        private String observacao;
 
-    private LocalTime horario;
-
-    private String observacao;
-
-    public Medicine() {}
-
-    public Medicine(String name, double dosagem, String frequencia, LocalTime horario, String observacao) {
-        setName(name);
-        setDosagem(dosagem);
-        setFrequencia(frequencia);
-        setHorario(horario);
-        setObservacao(observacao);
-    }
-
+        // Enum para frequências
+        public enum Frequencia {
+            DIARIA,
+            ALTERNADOS,
+            SEMANAL
+        }
 
     public Long getId() {
         return id;
@@ -45,7 +42,6 @@ public class Medicine {
     }
 
     public String getName() {
-
         return name;
     }
 
@@ -53,28 +49,36 @@ public class Medicine {
         this.name = name;
     }
 
-    public double getDosagem() {
+    public String getDosagem() {
         return dosagem;
     }
 
-    public void setDosagem(double dosagem) {
+    public void setDosagem(String dosagem) {
         this.dosagem = dosagem;
     }
 
-    public String getFrequencia() {
+    public Frequencia getFrequencia() {
         return frequencia;
     }
 
-    public void setFrequencia(String frequencia) {
+    public void setFrequencia(Frequencia frequencia) {
         this.frequencia = frequencia;
     }
 
-    public LocalTime getHorario() {
-        return horario;
+    public LocalDateTime getDataHoraInicial() {
+        return dataHoraInicial;
     }
 
-    public void setHorario(LocalTime horario) {
-        this.horario = horario;
+    public void setDataHoraInicial(LocalDateTime dataHoraInicial) {
+        this.dataHoraInicial = dataHoraInicial;
+    }
+
+    public LocalDateTime getProximaNotificacao() {
+        return proximaNotificacao;
+    }
+
+    public void setProximaNotificacao(LocalDateTime proximaNotificacao) {
+        this.proximaNotificacao = proximaNotificacao;
     }
 
     public String getObservacao() {
@@ -84,18 +88,4 @@ public class Medicine {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Medicine medicine)) return false;
-        return Objects.equals(getName(), medicine.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getName());
-    }
-
-
 }
